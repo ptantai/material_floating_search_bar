@@ -54,6 +54,8 @@ class FloatingSearchAppBar extends ImplicitlyAnimatedWidget {
     this.autocorrect = true,
     this.contextMenuBuilder,
     this.onKeyEvent,
+    this.filled = false,
+    this.fillColor = Colors.white,
   })  : assert(progress == null || (progress is num || progress is bool)),
         super(key, implicitDuration, implicitCurve);
 
@@ -186,6 +188,10 @@ class FloatingSearchAppBar extends ImplicitlyAnimatedWidget {
   final EditableTextContextMenuBuilder? contextMenuBuilder;
 
   final ValueChanged<KeyEvent>? onKeyEvent;
+
+  final bool filled;
+
+  final Color fillColor;
 
   static FloatingSearchAppBarState? of(BuildContext context) {
     return context.findAncestorStateOfType<FloatingSearchAppBarState>();
@@ -625,6 +631,8 @@ class FloatingSearchAppBarState extends ImplicitlyAnimatedWidgetState<
               focusedBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
               focusedErrorBorder: InputBorder.none,
+              filled: widget.filled,
+              fillColor: widget.fillColor,
             ),
           ),
         ),

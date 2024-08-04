@@ -79,6 +79,10 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
     this.showCursor = true,
     bool initiallyHidden = false,
     this.onKeyEvent,
+    this.filled = false,
+    this.fillColor = Colors.white,
+    this.alwaysOpened = false,
+    this.hideKeyboardOnDownScroll = false,
   })  : showAfter =
             showAfter ?? (initiallyHidden ? const Duration(days: 1) : null),
         super(key, implicitDuration, implicitCurve);
@@ -413,6 +417,14 @@ class FloatingSearchBar extends ImplicitlyAnimatedWidget {
   /// The [EdgeInsets] of the [SingleChildScrollView] holding the expandable body of
   /// this `FloatingSearchBar`.
   final EdgeInsets scrollPadding;
+
+  final bool filled;
+
+  final Color fillColor;
+
+  final bool alwaysOpened;
+
+  final bool hideKeyboardOnDownScroll;
 
   @override
   FloatingSearchBarState createState() => FloatingSearchBarState();
@@ -773,6 +785,10 @@ class FloatingSearchBarState extends ImplicitlyAnimatedWidgetState<
       titleStyle: widget.queryStyle,
       shadowColor: style.shadowColor,
       onKeyEvent: widget.onKeyEvent,
+      filled: widget.filled,
+      fillColor: widget.fillColor,
+      alwaysOpened: widget.alwaysOpened,
+      hideKeyboardOnDownScroll: widget.hideKeyboardOnDownScroll,
     );
 
     final Widget searchBar = SizedBox.expand(
